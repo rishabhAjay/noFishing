@@ -19,7 +19,8 @@ const help = () => {
         embeds: [
           {
             description: "**__Just add the bot and watch it in action.__**",
-            title: "No Fishing is a bot that deletes phishing links.",
+            title:
+              "No Fishing is a bot that deletes phishing links. You have to provide Administrator privilages to it for the bot to work.",
             fields: [
               {
                 value: "Generates an invite link to the support server.",
