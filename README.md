@@ -10,4 +10,4 @@ To create an app instance on discord, you may refer to this guide [discord-bot-i
 ### To host the bot locally or on heroku, follow this link:
 
 [Lights Off readme](https://github.com/rishabhAjay/lightsoff#readme)
-**(YOU DONT HAVE TO CONFIGURE PUPPETEER FOR THIS PROJECT)**
+**(YOU DON'T HAVE TO CONFIGURE PUPPETEER FOR THIS PROJECT)**
