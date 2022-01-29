@@ -11,11 +11,17 @@ const createInvite = () => {
           maxUses: 1, // maximum times it can be used
         });
       //reply with invite link
-      msg.reply(
-        invite
-          ? `Here's your invite to our server: ${invite}`
-          : "There has been an error during the creation of the invite."
-      );
+      try {
+        await msg.reply(
+          invite
+            ? `Here's your invite to our server: ${invite}`
+            : "There has been an error during the creation of the invite."
+        );
+      } catch (error) {
+        msg.author.send(
+          "The bot does not have permissions. Give it the Administrator permission"
+        );
+      }
     }
   });
 };

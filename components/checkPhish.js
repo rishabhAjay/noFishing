@@ -4,10 +4,16 @@ const checkPhish = () => {
   clientConfig.on("messageCreate", async (msg) => {
     const domainsList = await domainList();
 
-    domainsList.map((ele) => {
+    domainsList.map(async (ele) => {
       if (msg.content.includes(ele)) {
-        msg.channel.send(`${msg.author} has posted a suspicious link.`);
-        msg.delete();
+        try {
+          await msg.channel.send(`${msg.author} has posted a suspicious link.`);
+          await msg.delete();
+        } catch (error) {
+          msg.author.send(
+            "The bot does not have permissions. Give it the Administrator permission"
+          );
+        }
       }
     });
   });
