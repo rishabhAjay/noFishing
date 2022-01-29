@@ -10,9 +10,11 @@ const checkPhish = () => {
           await msg.channel.send(`${msg.author} has posted a suspicious link.`);
           await msg.delete();
         } catch (error) {
-          msg.author.send(
-            "The bot does not have permissions. Give it the Administrator permission"
-          );
+          if (error.message !== "Unknown Message") {
+            msg.author.send(
+              "The bot does not have permissions. Give it the Administrator permission"
+            );
+          }
         }
       }
     });
