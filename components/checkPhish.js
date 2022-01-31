@@ -8,12 +8,18 @@ const checkPhish = () => {
       if (msg.content.includes(ele)) {
         try {
           await msg.channel.send(`${msg.author} has posted a suspicious link.`);
-          await msg.delete();
+          if (msg) {
+            await msg.delete();
+          }
         } catch (error) {
           if (error.message !== "Unknown Message") {
-            msg.author.send(
-              "The bot does not have permissions. Give it the Administrator permission"
-            );
+            try {
+              await msg.author.send(
+                "The bot does not have permissions. Give it the Administrator permission"
+              );
+            } catch (error) {
+              clientConfig.user.setActivity("=/help");
+            }
           }
         }
       }

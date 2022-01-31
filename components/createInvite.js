@@ -18,9 +18,13 @@ const createInvite = () => {
             : "There has been an error during the creation of the invite."
         );
       } catch (error) {
-        msg.author.send(
-          "The bot does not have permissions. Give it the Administrator permission"
-        );
+        try {
+          await msg.author.send(
+            "The bot does not have permissions. Give it the Administrator permission"
+          );
+        } catch (error) {
+          clientConfig.user.setActivity("=/help");
+        }
       }
     }
   });
