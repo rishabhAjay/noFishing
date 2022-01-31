@@ -18,7 +18,7 @@ const checkPhish = () => {
                 "The bot does not have permissions. Give it the Administrator permission"
               );
             } catch (error) {
-              clientConfig.user.setActivity("=/help");
+              clientConfig.user.setActivity(";/help");
             }
           }
         }
