@@ -12,9 +12,13 @@ const checkPhish = () => {
             await msg.delete();
           }
         } catch (error) {
+          const guild = await clientConfig.guilds.fetch(msg.guildId);
+          const owner = guild.members.cache
+            .filter((user) => user.id === guild.ownerId)
+            .first();
           if (error.message !== "Unknown Message") {
             try {
-              await msg.author.send(
+              await owner.user.send(
                 "The bot does not have permissions. Give it the Administrator permission"
               );
             } catch (error) {
