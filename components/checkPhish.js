@@ -15,8 +15,8 @@ const checkPhish = () => {
           urls = urls ? urls : "nothing";
           domainsList.map(async (ele2) => {
             if (
-              (urls.includes(ele2) && msg.content.includes(ele)) ||
-              msg.content.includes(ele2)
+              (urls.includes(ele2) && msg.content.includes(ele) && ele2 !== "ord.gg") ||
+              msg.content.includes(ele2) && ele2 !== "ord.gg"
             ) {
               try {
                 if (msg) {
