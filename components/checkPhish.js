@@ -12,11 +12,13 @@ const checkPhish = () => {
       result.map(async (ele) => {
         try {
           let urls = await uu.expand(ele);
-          urls = urls ? urls : "nothing";
+          urls = urls ? new URL(urls).hostname.replace("www.", "") : "nothing";
+          ele = new URL(ele).hostname.replace("www.", "");
           domainsList.map(async (ele2) => {
             if (
-              (urls.includes(ele2) && msg.content.includes(ele) && ele2 !== "ord.gg") ||
-              msg.content.includes(ele2) && ele2 !== "ord.gg"
+              urls === ele2 ||
+              ele === ele2
+              // msg.content.includes(ele2)
             ) {
               try {
                 if (msg) {
